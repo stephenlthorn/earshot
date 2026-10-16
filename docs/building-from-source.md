@@ -234,7 +234,7 @@ claude auth status
 
 `auth status` should report `"authMethod": "claude.ai"`. The calls count against your plan's usage limits, like any other use of Claude Code. Each `claude -p` run in the shell checks is capped at $1 with `--max-budget-usd`.
 
-On a Max plan, `make e2e-import` has passed: the real app imported a spoken meeting and wrote its notes through `claude -p`, twice. The full `make claude-test` suite hasn't run yet. `make claude-test` runs these checks against your own Claude Code.
+`make claude-test` passed all 15 checks on a Team plan (16 Oct 2026), and `make e2e-import`, where the real app imports a spoken meeting and writes its notes through `claude -p`, has passed on Max and Team plans. `make claude-test` runs these checks against your own Claude Code.
 
 What they check:
 

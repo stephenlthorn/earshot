@@ -157,7 +157,7 @@ What Earshot does and doesn't do:
 - It runs the `claude` you installed, unmodified, and Claude Code signs itself in.
 - It never reads, stores or passes on your Claude login.
 - It builds a clean environment for `claude`, so a stray `ANTHROPIC_API_KEY` in your shell can't switch you to API billing.
-- On a Max plan, `make e2e-import` has passed: the real app imported a spoken meeting and wrote its notes through `claude -p`, twice. The full `make claude-test` suite hasn't run yet. `make claude-test` runs the checks against your own Claude Code. On Pro, onboarding suggests Sonnet for notes and advises leaving the live assistant off.
+- `make claude-test` passed all 15 subscription checks on a Team plan (16 Oct 2026), and `make e2e-import`, where the real app imports a spoken meeting and writes its notes through `claude -p`, has passed on Max and Team plans. `make claude-test` runs the same checks against your own Claude Code. On Pro, onboarding suggests Sonnet for notes and advises leaving the live assistant off.
 
 > [!NOTE]
 > Earshot runs your own Claude Code with your subscription. Anthropic's terms may change; an API key is the fully supported route. Earshot is an independent project and is not made or endorsed by Anthropic.

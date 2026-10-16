@@ -11,7 +11,7 @@ Earshot uses Claude for notes, live to-dos, the brief, Ask and Fix. This guide s
 | **How it works** | Earshot runs your own Claude Code, which signs itself in with your plan | Earshot calls Anthropic's API with a key you paste in |
 | **What you pay** | Nothing extra: it draws from your plan's usage limits | Per use, billed to the key's owner |
 | **What you need** | Claude Code 2.1.259 or later, signed in with Pro, Max, Team or Enterprise | A key from the Claude Console |
-| **Status** | The default for new installs. `make e2e-import` has passed on a Max plan; the full `make claude-test` suite hasn't run yet | The fully supported route |
+| **Status** | The default for new installs. `make claude-test` passed all 15 checks on a Team plan; `make e2e-import` has passed on Max and Team | The fully supported route |
 
 You can switch between them at any time in **Settings > Claude**. There is a third choice: a local model through Ollama, LM Studio or llama.cpp, which keeps the whole meeting on your Mac and needs no Claude account. See [Local models](local-models.md).
 
@@ -20,7 +20,7 @@ You can switch between them at any time in **Settings > Claude**. There is a thi
 Earshot runs your own Claude Code with your subscription. Anthropic's terms may change; an API key is the fully supported route.
 
 - Earshot is an independent open-source project. It is not made, reviewed or endorsed by Anthropic.
-- On a Max plan, `make e2e-import` has passed: the real app imported a spoken meeting and wrote its notes through `claude -p`, twice. The full `make claude-test` suite hasn't run yet; it runs the checks against your own Claude Code. Subscription mode should work the same on Pro, Team and Enterprise, but those plans haven't been tested.
+- `make claude-test`, which runs every subscription check against your own Claude Code, passed all 15 on a Team plan (16 Oct 2026). `make e2e-import`, where the real app imports a spoken meeting and writes its notes through `claude -p`, has passed on Max and Team plans. Subscription mode should work the same on Pro and Enterprise, but those plans haven't been tested.
 - Earshot never reads, stores or passes on your Claude login. It never asks for a token from `claude setup-token`. Claude Code signs itself in, exactly as it does when you run it in Terminal.
 
 Here is what Anthropic's [Claude Code legal and compliance page](https://code.claude.com/docs/en/legal-and-compliance) says today, so you can judge for yourself:

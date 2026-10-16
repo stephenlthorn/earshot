@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Changed
+
+- Docs: subscription mode is now fully verified. `make claude-test` passed all 15 checks on a Team plan, and `make e2e-import` passed on Max and Team plans.
+
 ## [0.3.0] - 2026-10-16
 
 Earshot can now run fully on your Mac. Transcription was already on-device; with a local model server, the notes and every other AI feature stay there too.
