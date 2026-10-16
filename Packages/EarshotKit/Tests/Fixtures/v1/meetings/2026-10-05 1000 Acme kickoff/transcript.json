@@ -1,0 +1,26 @@
+[
+  {
+    "end" : 6,
+    "start" : 2,
+    "text" : "Dana, thanks for making time. I'll send the pilot scope by Friday.",
+    "track" : "me"
+  },
+  {
+    "end" : 14.25,
+    "start" : 8.25,
+    "text" : "Great. We log every field job by hand today, so the pilot matters.",
+    "track" : "them"
+  },
+  {
+    "end" : 26.25,
+    "start" : 20.25,
+    "text" : "Let's start the pilot Monday with the Boston team.",
+    "track" : "them"
+  },
+  {
+    "end" : 44,
+    "start" : 40,
+    "text" : "I'll book a venue for the review.",
+    "track" : "me"
+  }
+]

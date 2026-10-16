@@ -1,0 +1,7 @@
+# Scripts/meeting-script.txt  (voice:line; both voices ship with macOS)
+Daniel:Hi Samantha, thanks for joining. Let's plan the Acme pilot.
+Samantha:Sounds good. Dana wants the pilot scope in writing.
+Daniel:I will draft the pilot scope email to Dana by Friday.
+Samantha:Great. I'll book the venue for the kickoff next Tuesday.
+Daniel:Perfect. Let's also research three scheduling tools before Monday.
+Samantha:Agreed. Talk soon.

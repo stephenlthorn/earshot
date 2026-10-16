@@ -1,0 +1,7 @@
+[00:03] Stephen: Thanks both for joining. Let's go through the security review.
+[00:15] Them: Sure. We still need your completed security questionnaire before legal will sign.
+[00:31] Stephen: Understood. I'll fill in the questionnaire and send it back by the end of the month.
+[00:48] Them: Thanks. On our side, someone will send over the data processing agreement this week.
+[01:05] Them: And we'd like a short call with your engineering lead about single sign-on.
+[01:20] Stephen: I'll set that up and send a few times.
+[01:34] Them: Great, that's everything from us.

@@ -1,0 +1,14 @@
+[
+  {
+    "end" : 7,
+    "start" : 2,
+    "text" : "Peter, I'll prepare the onboarding plan by Thursday.",
+    "track" : "me"
+  },
+  {
+    "end" : 15.25,
+    "start" : 9.25,
+    "text" : "Good. Our two admins need training before the quarter ends.",
+    "track" : "them"
+  }
+]

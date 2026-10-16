@@ -1,0 +1,48 @@
+{
+  "endedAt" : "2026-10-06T18:47:00Z",
+  "folderName" : "2026-10-06 1400 Globex pricing review",
+  "id" : "2026-10-06-1400-f90d",
+  "inFlight" : [
+
+  ],
+  "mode" : "notes_and_do",
+  "recording" : false,
+  "sent" : [
+    "webhook"
+  ],
+  "stages" : {
+    "compress" : {
+      "failures" : 0,
+      "status" : "done"
+    },
+    "dispatch" : {
+      "failures" : 0,
+      "status" : "done"
+    },
+    "notes" : {
+      "failures" : 0,
+      "status" : "done"
+    },
+    "transcribe" : {
+      "failures" : 0,
+      "status" : "done"
+    }
+  },
+  "startedAt" : "2026-10-06T18:00:00Z",
+  "title" : "Globex pricing review",
+  "tracks" : [
+    {
+      "file" : "mic.m4a",
+      "offset" : 0,
+      "track" : "me"
+    },
+    {
+      "file" : "system.m4a",
+      "offset" : 0.25,
+      "track" : "them"
+    }
+  ],
+  "warnings" : [
+
+  ]
+}

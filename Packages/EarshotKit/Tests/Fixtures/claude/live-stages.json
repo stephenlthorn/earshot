@@ -1,0 +1,19 @@
+[
+  [
+    {"track": "me", "start": 4, "end": 9, "text": "Thanks for joining, Ashley. Let's go through the proposal and the onboarding plan."},
+    {"track": "them", "start": 11, "end": 18, "text": "Sure. Could you send me the revised proposal with the three-year pricing option?"},
+    {"track": "me", "start": 19, "end": 23, "text": "Yes, I'll send you the revised proposal."},
+    {"track": "them", "start": 25, "end": 33, "text": "Great. And can someone draft an onboarding checklist for our new hires? I'll review it."},
+    {"track": "me", "start": 34, "end": 38, "text": "I'll draft the onboarding checklist for you."}
+  ],
+  [
+    {"track": "them", "start": 95, "end": 104, "text": "One change on the proposal: our board meets earlier, so I need the revised proposal by Thursday, not later."},
+    {"track": "me", "start": 105, "end": 110, "text": "Understood, the revised proposal will be with you by Thursday."},
+    {"track": "them", "start": 112, "end": 118, "text": "Thanks, Thursday works for us."}
+  ],
+  [
+    {"track": "them", "start": 190, "end": 198, "text": "Last thing: we want a kickoff workshop with both teams the week after next."},
+    {"track": "me", "start": 199, "end": 206, "text": "I'll book a venue for the kickoff workshop and send you the details."},
+    {"track": "them", "start": 207, "end": 211, "text": "Perfect, that's everything for today."}
+  ]
+]

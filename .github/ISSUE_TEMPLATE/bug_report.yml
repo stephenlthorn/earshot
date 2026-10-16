@@ -1,0 +1,139 @@
+name: Bug report
+description: Something in Earshot doesn't work the way the docs say it should.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report this.
+
+        Please don't paste real transcripts, notes, recordings, API keys or tokens. They can hold private data, and issues are public. Use made-up examples instead.
+
+        Security problems go to the [private reporting form](https://github.com/stephenlthorn/earshot/security/advisories/new), not here. See SECURITY.md.
+  - type: checkboxes
+    id: searched
+    attributes:
+      label: Existing issues
+      options:
+        - label: I searched open and closed issues, and this isn't a duplicate.
+          required: true
+        - label: I read the troubleshooting guide (docs/troubleshooting.md).
+          required: false
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What you did, what you expected, and what happened instead.
+      placeholder: I pressed Stop after a Zoom call in Notes mode. I expected notes within a couple of minutes, but the meeting shows "Notes failed" with Retry.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Choose Notes mode
+        2. Start a Zoom call
+        3. Press Stop
+        4. ...
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      description: Which part of Earshot is this about?
+      options:
+        - Recording
+        - Transcription
+        - Notes
+        - Live assistant or the panel
+        - Calendar and the brief
+        - Noticing calls
+        - Flags, ask or fix
+        - Screen reading
+        - Do targets (Claude Code, webhook, command, routine)
+        - MCP server, command-line tool or plugins
+        - Settings or onboarding
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Mode
+      options:
+        - Record
+        - Notes
+        - Notes + Do
+        - Import audio
+        - Not about a recording
+    validations:
+      required: true
+  - type: dropdown
+    id: claude-provider
+    attributes:
+      label: Claude setup
+      options:
+        - Claude subscription (through Claude Code)
+        - Anthropic API key
+        - Not set up
+    validations:
+      required: true
+  - type: input
+    id: app-version
+    attributes:
+      label: Earshot version
+      description: From the release you downloaded, or run `/Applications/Earshot.app/Contents/Helpers/earshot version`.
+      placeholder: e.g. 0.2.0
+    validations:
+      required: true
+  - type: input
+    id: macos-version
+    attributes:
+      label: macOS version
+      description: Apple menu > About This Mac.
+      placeholder: e.g. 26.6.2
+    validations:
+      required: true
+  - type: input
+    id: claude-version
+    attributes:
+      label: Claude Code version
+      description: Run `claude --version`. Leave blank if you use an API key only.
+      placeholder: e.g. 2.1.296
+  - type: dropdown
+    id: hardware
+    attributes:
+      label: Mac
+      options:
+        - Apple silicon
+        - Intel
+  - type: input
+    id: call-app
+    attributes:
+      label: Call app
+      description: If it happened during a call.
+      placeholder: e.g. Zoom, Google Meet in Chrome, Teams, FaceTime
+  - type: textarea
+    id: doctor
+    attributes:
+      label: Output of earshot doctor
+      description: |
+        Run `/Applications/Earshot.app/Contents/Helpers/earshot doctor` in Terminal and paste the result. Remove anything private first.
+      render: shell
+  - type: textarea
+    id: logs
+    attributes:
+      label: Warnings or logs
+      description: The meeting's warning text, the relevant lines of a `do-<target>.log`, or Console output filtered to "Earshot". Remove anything private first.
+      render: shell
+  - type: upload
+    id: screenshots
+    attributes:
+      label: Screenshots or recordings
+      description: Optional. Drag and drop. Check they show no private meeting content.
+    validations:
+      required: false
+      accept: ".png,.jpg,.gif,.mov,.mp4,.log,.txt"

@@ -1,0 +1,36 @@
+{
+  "endedAt" : "2026-10-07T13:05:00Z",
+  "folderName" : "2026-10-07 0900 Voice memo",
+  "id" : "2026-10-07-0900-35a0",
+  "inFlight" : [
+
+  ],
+  "mode" : "record",
+  "recording" : false,
+  "sent" : [
+
+  ],
+  "stages" : {
+    "compress" : {
+      "failures" : 0,
+      "status" : "done"
+    }
+  },
+  "startedAt" : "2026-10-07T13:00:00Z",
+  "title" : "Voice memo",
+  "tracks" : [
+    {
+      "file" : "mic.m4a",
+      "offset" : 0,
+      "track" : "me"
+    },
+    {
+      "file" : "system.m4a",
+      "offset" : 0.25,
+      "track" : "them"
+    }
+  ],
+  "warnings" : [
+
+  ]
+}

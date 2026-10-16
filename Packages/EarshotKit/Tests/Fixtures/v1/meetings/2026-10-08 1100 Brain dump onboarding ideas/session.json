@@ -1,0 +1,39 @@
+{
+  "endedAt" : "2026-10-08T15:10:00Z",
+  "folderName" : "2026-10-08 1100 Brain dump onboarding ideas",
+  "id" : "2026-10-08-1100-ba83",
+  "inFlight" : [
+
+  ],
+  "mode" : "notes",
+  "recording" : false,
+  "sent" : [
+
+  ],
+  "stages" : {
+    "compress" : {
+      "failures" : 0,
+      "status" : "done"
+    },
+    "notes" : {
+      "failures" : 0,
+      "status" : "done"
+    },
+    "transcribe" : {
+      "failures" : 0,
+      "status" : "done"
+    }
+  },
+  "startedAt" : "2026-10-08T15:00:00Z",
+  "title" : "Brain dump: onboarding ideas",
+  "tracks" : [
+    {
+      "file" : "import.m4a",
+      "offset" : 0,
+      "track" : "speaker"
+    }
+  ],
+  "warnings" : [
+
+  ]
+}

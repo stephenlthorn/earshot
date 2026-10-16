@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Setup help and troubleshooting
+    url: https://github.com/stephenlthorn/earshot/blob/main/docs/troubleshooting.md
+    about: Permissions, the silent call track, Claude setup and other common questions.
+  - name: Questions and ideas
+    url: https://github.com/stephenlthorn/earshot/discussions
+    about: Ask how to set something up, or share how you use Earshot.
+  - name: Security vulnerability
+    url: https://github.com/stephenlthorn/earshot/security/advisories/new
+    about: Report security problems privately, not as an issue.

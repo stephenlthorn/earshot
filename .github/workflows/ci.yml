@@ -1,0 +1,161 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  # One Xcode 26.x so builds are repeatable. The macos-26 image ships 26.0.1 to 26.6 side by side;
+  # change both lines together when moving to a newer one.
+  XCODE_VERSION: "26.6"
+  DEVELOPER_DIR: /Applications/Xcode_26.6.app/Contents/Developer
+
+jobs:
+  kit:
+    name: EarshotKit tests and CLI
+    runs-on: macos-26
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Select Xcode
+        run: |
+          sudo xcode-select -s "$DEVELOPER_DIR"
+          xcodebuild -version | sed -n 1p | grep -qx "Xcode $XCODE_VERSION" \
+            || { echo "::error::Expected Xcode $XCODE_VERSION, got $(xcodebuild -version | sed -n 1p)"; exit 1; }
+          sw_vers
+          xcodebuild -version
+          swift --version
+          python3 --version
+
+      - name: Unit tests (make test)
+        # Device tests (speech assets, audio, Keychain) and Claude tests (real model calls) stay off:
+        # EARSHOT_DEVICE_TESTS and EARSHOT_CLAUDE_TESTS are unset here.
+        run: make test
+
+      - name: e2e-import checker tests
+        # The same unittest `make e2e-import` runs first. It uses made-up run folders only.
+        run: python3 -B -m unittest discover -s Scripts -p 'test_*.py'
+
+      - name: Build the earshot command-line tool
+        working-directory: Packages/EarshotKit
+        run: |
+          swift build -c release --product earshot
+          "$(swift build -c release --show-bin-path)/earshot" version
+
+  app:
+    name: App build (unsigned)
+    runs-on: macos-26
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Select Xcode
+        run: |
+          sudo xcode-select -s "$DEVELOPER_DIR"
+          xcodebuild -version | sed -n 1p | grep -qx "Xcode $XCODE_VERSION" \
+            || { echo "::error::Expected Xcode $XCODE_VERSION, got $(xcodebuild -version | sed -n 1p)"; exit 1; }
+          xcodebuild -version
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Generate the Xcode project
+        # project.yml's postGenCommand fixes the app icon's file type with BSD `sed -i ''` and then greps for it,
+        # so /usr/bin comes first in case a GNU sed is on the image's PATH.
+        run: |
+          PATH="/usr/bin:/bin:$PATH" xcodegen generate --quiet
+          grep -q 'lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon;' Earshot.xcodeproj/project.pbxproj
+
+      - name: Build
+        # The same build `make app` runs, without the signing that follows it.
+        run: |
+          xcodebuild -project Earshot.xcodeproj -scheme Earshot \
+            -configuration Release -derivedDataPath build \
+            -destination 'generic/platform=macOS' \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGN_IDENTITY="" \
+            -quiet build
+
+      - name: Check the app is universal
+        run: lipo build/Build/Products/Release/Earshot.app/Contents/MacOS/Earshot -verify_arch arm64 x86_64
+
+  plugins:
+    name: Plugin JSON
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v7
+
+      # `claude plugin validate --strict` needs the claude CLI, which isn't on CI. Run it yourself before a pull
+      # request that touches plugins/ or .claude-plugin/. This job checks the JSON and the launchers.
+      - name: Validate marketplace, plugin, MCP and hooks JSON
+        shell: bash
+        run: |
+          set -uo pipefail
+          shopt -s nullglob
+
+          plugins=(plugins/*/.claude-plugin/plugin.json)
+          if [ ${#plugins[@]} -eq 0 ]; then
+            echo "::error::No plugins/*/.claude-plugin/plugin.json found"
+            exit 1
+          fi
+
+          status=0
+          for f in .claude-plugin/marketplace.json "${plugins[@]}" plugins/*/.mcp.json plugins/*/hooks/*.json; do
+            if python3 -m json.tool "$f" > /dev/null; then
+              echo "ok      $f"
+            else
+              echo "::error file=$f::Not valid JSON"
+              status=1
+            fi
+          done
+
+          # A hooks file without the top-level "hooks" key fails to load in Claude Code.
+          for f in plugins/*/hooks/*.json; do
+            if ! python3 -c 'import json, sys; sys.exit(0 if "hooks" in json.load(open(sys.argv[1])) else 1)' "$f" 2> /dev/null; then
+              echo "::error file=$f::Missing the top-level \"hooks\" key"
+              status=1
+            fi
+          done
+
+          # Every plugin the marketplace lists must exist, with a plugin.json of the same name.
+          if ! python3 - <<'PY'
+          import json, os, sys
+          market = json.load(open(".claude-plugin/marketplace.json"))
+          bad = 0
+          for entry in market.get("plugins", []):
+              path = os.path.normpath(os.path.join(entry["source"], ".claude-plugin", "plugin.json"))
+              if not os.path.isfile(path):
+                  print(f"::error file=.claude-plugin/marketplace.json::{entry['name']}: no plugin.json at {entry['source']}")
+                  bad = 1
+              elif json.load(open(path)).get("name") != entry["name"]:
+                  print(f"::error file={path}::name doesn't match the marketplace entry {entry['name']}")
+                  bad = 1
+              else:
+                  print(f"ok      {entry['name']} -> {entry['source']}")
+          sys.exit(bad)
+          PY
+          then
+            status=1
+          fi
+
+          # The MCP launcher and the reminders hook run as commands, so they must be executable.
+          for f in plugins/*/scripts/*; do
+            if [ -x "$f" ]; then
+              echo "ok      $f is executable"
+            else
+              echo "::error file=$f::Not executable"
+              status=1
+            fi
+          done
+
+          exit $status

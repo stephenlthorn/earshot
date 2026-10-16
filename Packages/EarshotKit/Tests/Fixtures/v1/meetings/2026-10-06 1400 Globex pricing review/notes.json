@@ -1,0 +1,40 @@
+{
+  "action_items" : [
+    {
+      "context" : "40 seats, per-seat plan from next quarter.",
+      "doer" : "ai",
+      "due" : "next Tuesday",
+      "owner" : "Stephen",
+      "task" : "Draft the per-seat pricing one-pager"
+    },
+    {
+      "context" : "",
+      "doer" : "me",
+      "due" : null,
+      "owner" : "Stephen",
+      "task" : "Email Mike the renewal contract"
+    },
+    {
+      "context" : "Covers the last six months.",
+      "doer" : "someone_else",
+      "due" : "Friday",
+      "owner" : "Mike Chen",
+      "task" : "Send the usage export"
+    }
+  ],
+  "attendees" : [
+    "Stephen",
+    "Mike Chen"
+  ],
+  "decisions" : [
+    "Move Globex to per-seat pricing next quarter"
+  ],
+  "key_points" : [
+    "Globex has 40 active seats"
+  ],
+  "open_questions" : [
+
+  ],
+  "summary" : "Mike Chen walked through Globex usage. Pricing moves to a per-seat plan next quarter.",
+  "title" : "Globex pricing review"
+}

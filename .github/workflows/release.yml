@@ -1,0 +1,104 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  # Keep these the same as in ci.yml.
+  XCODE_VERSION: "26.6"
+  DEVELOPER_DIR: /Applications/Xcode_26.6.app/Contents/Developer
+
+jobs:
+  release:
+    name: Build and publish
+    runs-on: macos-26
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Check the tag matches the app version
+        run: |
+          tag="${GITHUB_REF_NAME#v}"
+          base="${tag%%-*}"
+          version=$(grep -E '^[[:space:]]*MARKETING_VERSION:' project.yml | head -1 \
+            | sed -E 's/.*MARKETING_VERSION:[[:space:]]*"?([^"[:space:]]+)"?.*/\1/')
+          echo "Tag: $tag  project.yml: $version"
+          if [ "$base" != "$version" ]; then
+            echo "::error file=project.yml::MARKETING_VERSION is $version but the tag is $GITHUB_REF_NAME"
+            exit 1
+          fi
+
+      - name: Select Xcode
+        run: |
+          sudo xcode-select -s "$DEVELOPER_DIR"
+          xcodebuild -version | sed -n 1p | grep -qx "Xcode $XCODE_VERSION" \
+            || { echo "::error::Expected Xcode $XCODE_VERSION, got $(xcodebuild -version | sed -n 1p)"; exit 1; }
+          xcodebuild -version
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Build the release zip (ad-hoc signed)
+        # make release runs make app (xcodegen, an unsigned universal build, the universal earshot helper, then
+        # codesign with the hardened runtime), zips the app to build/Earshot.zip, unzips it again and runs
+        # verify-app on the copy. SIGN_IDENTITY=- signs ad hoc. Builds are not notarized yet.
+        # /usr/bin comes first because project.yml's postGenCommand uses BSD `sed -i ''`.
+        run: PATH="/usr/bin:/bin:$PATH" make release SIGN_IDENTITY=-
+
+      - name: Checksum
+        working-directory: build
+        run: |
+          shasum -a 256 Earshot.zip > Earshot.zip.sha256
+          cat Earshot.zip.sha256
+
+      - name: Write release notes
+        run: |
+          version="${GITHUB_REF_NAME#v}"
+          sha=$(cut -d ' ' -f 1 build/Earshot.zip.sha256)
+          {
+            awk -v v="$version" '
+              index($0, "## [" v "]") == 1 { found = 1; next }
+              found && /^## \[/ { exit }
+              found { print }
+            ' CHANGELOG.md
+            echo
+            echo "## Install"
+            echo
+            echo "1. Download \`Earshot.zip\`, unzip it and move Earshot to your Applications folder."
+            echo "2. This build is not notarized yet, so macOS blocks it the first time. Try to open Earshot once, then go to System Settings > Privacy & Security and click **Open Anyway**."
+            echo "3. Until builds are notarized, you need to grant Earshot's permissions again after each update."
+            echo
+            echo "SHA-256 of \`Earshot.zip\`: \`$sha\`"
+            echo
+            echo "Check your download with:"
+            echo
+            echo '```sh'
+            echo 'shasum -a 256 -c Earshot.zip.sha256'
+            echo '```'
+          } > build/release-notes.md
+          cat build/release-notes.md
+
+      - name: Publish to GitHub Releases
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          tag="$GITHUB_REF_NAME"
+          if gh release view "$tag" > /dev/null 2>&1; then
+            gh release upload "$tag" build/Earshot.zip build/Earshot.zip.sha256 --clobber
+          else
+            prerelease=""
+            case "$tag" in *-*) prerelease="--prerelease" ;; esac
+            gh release create "$tag" build/Earshot.zip build/Earshot.zip.sha256 \
+              --verify-tag \
+              --title "Earshot ${tag#v}" \
+              --notes-file build/release-notes.md \
+              $prerelease
+          fi

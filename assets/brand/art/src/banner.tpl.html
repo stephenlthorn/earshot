@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1280">
+<title>Earshot banner</title>
+<!-- Render: banner.html?theme=light | banner.html?theme=dark at 1280x550, device scale 2 -->
+<script>
+  document.documentElement.dataset.theme =
+    new URLSearchParams(location.search).get('theme') === 'dark' ? 'dark' : 'light';
+</script>
+<style>
+  :root {
+    --deep: #1E1B4B; --indigo: #4F46E5; --violet: #8B5CF6; --cyan: #22D3EE;
+    --red: #EF4444; --warm: #F7F7FB; --ink: #0F0E1A;
+
+    --bg: #F7F7FB;
+    --text: #15132B;
+    --text-2: #4A4768;
+    --text-3: #7C7998;
+    --glow-a: rgba(79, 70, 229, 0.13);
+    --glow-b: rgba(139, 92, 246, 0.12);
+    --glow-c: rgba(34, 211, 238, 0.06);
+    --grid: rgba(79, 70, 229, 0.07);
+
+    --panel-bg: linear-gradient(180deg, rgba(255,255,255,0.86), rgba(250,250,255,0.74));
+    --panel-border: rgba(30, 27, 75, 0.10);
+    --panel-hi: rgba(255,255,255,0.95);
+    --panel-shadow: 0 1px 0 rgba(255,255,255,0.9) inset,
+                    0 30px 60px -20px rgba(30, 27, 75, 0.28),
+                    0 12px 24px -12px rgba(30, 27, 75, 0.18);
+    --row-bg: rgba(255,255,255,0.72);
+    --row-border: rgba(30, 27, 75, 0.07);
+    --divider: rgba(30, 27, 75, 0.08);
+    --chip-bg: rgba(79, 70, 229, 0.09);
+    --chip-text: #3F37C9;
+    --check: rgba(30, 27, 75, 0.22);
+    --running-bg: rgba(34, 211, 238, 0.12);
+    --running-text: #0E7490;
+    --running-border: rgba(14, 116, 144, 0.22);
+    --wave: #4F46E5;
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F0E1A;
+    --text: #F7F7FB;
+    --text-2: #B9B6D9;
+    --text-3: #8A87AE;
+    --glow-a: rgba(79, 70, 229, 0.38);
+    --glow-b: rgba(139, 92, 246, 0.24);
+    --glow-c: rgba(79, 70, 229, 0.16);
+    --grid: rgba(139, 132, 255, 0.07);
+
+    --panel-bg: linear-gradient(180deg, rgba(40, 36, 82, 0.78), rgba(24, 22, 52, 0.80));
+    --panel-border: rgba(170, 164, 255, 0.16);
+    --panel-hi: rgba(255,255,255,0.10);
+    --panel-shadow: 0 1px 0 rgba(255,255,255,0.10) inset,
+                    0 30px 70px -20px rgba(0, 0, 0, 0.6),
+                    0 0 80px -10px rgba(79, 70, 229, 0.35);
+    --row-bg: rgba(255,255,255,0.045);
+    --row-border: rgba(200, 196, 255, 0.08);
+    --divider: rgba(200, 196, 255, 0.10);
+    --chip-bg: rgba(139, 132, 255, 0.16);
+    --chip-text: #CBC8FB;
+    --check: rgba(200, 196, 255, 0.30);
+    --running-bg: rgba(34, 211, 238, 0.12);
+    --running-text: #67E8F9;
+    --running-border: rgba(34, 211, 238, 0.30);
+    --wave: #22D3EE;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1280px; height: 550px; overflow: hidden; background: var(--bg); }
+  body {
+    font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+  }
+
+  /* Atmosphere */
+  .bg { position: absolute; inset: 0; overflow: hidden; }
+  .bg .g1 { position: absolute; width: 760px; height: 760px; left: 640px; top: -150px;
+            background: radial-gradient(closest-side, var(--glow-a), transparent); }
+  .bg .g2 { position: absolute; width: 560px; height: 560px; left: 900px; top: 220px;
+            background: radial-gradient(closest-side, var(--glow-b), transparent); }
+  .bg .g3 { position: absolute; width: 520px; height: 520px; left: -160px; top: -200px;
+            background: radial-gradient(closest-side, var(--glow-c), transparent); }
+  .bg .dots { position: absolute; inset: 0;
+              background-image: radial-gradient(var(--grid) 1.2px, transparent 1.4px);
+              background-size: 22px 22px;
+              -webkit-mask-image: radial-gradient(ellipse 640px 420px at 930px 275px, #000 30%, transparent 75%); }
+
+  /* Left column */
+  .left { position: absolute; left: 88px; top: 0; bottom: 0; width: 560px;
+          display: flex; flex-direction: column; justify-content: center; }
+  .brand { display: flex; align-items: center; gap: 18px; margin-left: -14px; }
+  .brand img { width: 112px; height: 112px; display: block;
+               filter: drop-shadow(0 10px 18px rgba(30, 27, 75, 0.18)); }
+  .wordmark { font-size: 64px; font-weight: 700; letter-spacing: -0.035em; line-height: 1; }
+  .tagline { margin-top: 26px; font-size: 34px; font-weight: 600; letter-spacing: -0.02em;
+             line-height: 1.15; }
+  .tagline .accent { background: linear-gradient(90deg, var(--indigo), var(--violet));
+                     -webkit-background-clip: text; background-clip: text; color: transparent; }
+  :root[data-theme="dark"] .tagline .accent {
+    background: linear-gradient(90deg, #A5B4FC, #C4B5FD); -webkit-background-clip: text; background-clip: text; }
+  .support { margin-top: 18px; font-size: 18px; line-height: 1.55; color: var(--text-2);
+             font-weight: 400; max-width: 500px; letter-spacing: -0.003em; }
+  .meta { margin-top: 26px; display: flex; gap: 10px; flex-wrap: wrap; }
+  .meta span { font-family: "SF Mono", ui-monospace, Menlo, monospace; font-size: 14px;
+               letter-spacing: 0.02em; color: var(--text-3); padding: 7px 13px;
+               border: 1px solid var(--divider); border-radius: 999px; }
+
+  /* Floating live panel */
+  .panel-wrap { position: absolute; left: 726px; top: 60px; width: 470px; }
+  .panel { position: relative; border-radius: 26px; padding: 18px 18px 16px;
+           background: var(--panel-bg); border: 1px solid var(--panel-border);
+           box-shadow: var(--panel-shadow);
+           backdrop-filter: blur(24px) saturate(160%); -webkit-backdrop-filter: blur(24px) saturate(160%); }
+  .panel::before { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+                   background: linear-gradient(180deg, var(--panel-hi), transparent 38%); opacity: .55; }
+
+  .titlebar { position: relative; display: flex; align-items: center; gap: 12px; padding: 2px 4px 14px; }
+  .rec { position: relative; width: 12px; height: 12px; border-radius: 50%; background: var(--red);
+         box-shadow: 0 0 0 5px rgba(239, 68, 68, 0.16), 0 0 14px rgba(239, 68, 68, 0.55); flex: none; }
+  .ttl { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+  .ttl b { font-size: 15px; font-weight: 600; letter-spacing: -0.01em; white-space: nowrap; }
+  .ttl small { font-family: "SF Mono", ui-monospace, Menlo, monospace; font-size: 13px;
+               color: var(--text-3); letter-spacing: 0.02em; }
+  .timer { margin-left: auto; font-family: "SF Mono", ui-monospace, Menlo, monospace; font-size: 15px;
+           font-weight: 500; font-variant-numeric: tabular-nums; color: var(--text);
+           padding: 6px 11px; border-radius: 10px; background: var(--row-bg); border: 1px solid var(--row-border); }
+
+  .wave { position: relative; display: flex; align-items: center; gap: 3px; height: 28px; padding: 0 4px 12px; }
+  .wave i { display: block; width: 3px; border-radius: 3px; background: var(--wave); }
+  .section { position: relative; display: flex; align-items: center; justify-content: space-between;
+             padding: 12px 4px 10px; border-top: 1px solid var(--divider);
+             font-family: "SF Mono", ui-monospace, Menlo, monospace; font-size: 13px; letter-spacing: 0.08em;
+             color: var(--text-3); text-transform: uppercase; }
+  .section .live { display: inline-flex; align-items: center; gap: 6px; color: var(--running-text); }
+  .section .live::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--cyan);
+                           box-shadow: 0 0 8px var(--cyan); }
+
+  .rows { position: relative; display: flex; flex-direction: column; gap: 8px; }
+  .row { display: grid; grid-template-columns: 20px 1fr auto; gap: 12px; align-items: center;
+         padding: 12px 12px 12px 14px; border-radius: 16px; background: var(--row-bg); border: 1px solid var(--row-border); }
+  .row .box { width: 18px; height: 18px; border-radius: 6px; border: 1.6px solid var(--check); align-self: start; margin-top: 2px; }
+  .row .body { min-width: 0; }
+  .row .t { font-size: 15px; font-weight: 500; letter-spacing: -0.01em; line-height: 1.3; white-space: nowrap;
+            overflow: hidden; text-overflow: ellipsis; }
+  .row .m { margin-top: 6px; display: flex; align-items: center; gap: 8px; font-size: 12.5px; color: var(--text-3); white-space: nowrap; }
+  .row .m > span { flex: none; }
+  .chip { display: inline-flex; align-items: center; gap: 6px; padding: 3px 9px 3px 3px; border-radius: 999px;
+          background: var(--chip-bg); color: var(--chip-text); font-weight: 500; font-size: 12px; }
+  .av { width: 18px; height: 18px; border-radius: 50%; display: grid; place-items: center; color: #fff;
+        font-size: 9.5px; font-weight: 700; letter-spacing: 0; }
+  .act { display: flex; justify-content: flex-end; align-items: center; }
+  .btn { font-size: 13px; font-weight: 600; color: #fff; padding: 7px 15px; border-radius: 999px;
+         background: linear-gradient(180deg, #5B54F0, #4338CA);
+         box-shadow: 0 1px 0 rgba(255,255,255,0.35) inset, 0 6px 14px -4px rgba(79, 70, 229, 0.55); }
+  .running { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; font-weight: 600;
+             color: var(--running-text); padding: 6px 12px 6px 10px; border-radius: 999px;
+             background: var(--running-bg); border: 1px solid var(--running-border); }
+  .spin { width: 13px; height: 13px; }
+  .btn.ghost { color: var(--chip-text); background: var(--chip-bg); }
+  :root:not([data-theme="dark"]) .btn.ghost { box-shadow: inset 0 0 0 1px rgba(79, 70, 229, 0.22); }
+  :root[data-theme="dark"] .btn.ghost { box-shadow: inset 0 0 0 1px rgba(165, 160, 255, 0.30); }
+  .fresh { display: inline-flex; align-items: center; gap: 5px; margin-left: 2px; color: var(--running-text); }
+  .fresh::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--cyan);
+                   box-shadow: 0 0 6px var(--cyan); }
+
+  .foot { position: relative; margin-top: 12px; padding: 0 4px; display: flex; align-items: center; justify-content: space-between;
+          font-family: "SF Mono", ui-monospace, Menlo, monospace; font-size: 13px; color: var(--text-3); letter-spacing: 0.01em; }
+  .foot .lock { display: inline-flex; align-items: center; gap: 6px; }
+</style>
+</head>
+<body>
+  <div class="bg"><div class="g3"></div><div class="g1"></div><div class="g2"></div><div class="dots"></div></div>
+
+  <section class="left">
+    <div class="brand">
+      <img src="{{ICON}}" alt="">
+      <div class="wordmark">Earshot</div>
+    </div>
+    <div class="tagline">Meetings, <span class="accent">heard and handled.</span></div>
+    <p class="support">Records your calls, writes the notes, and starts the work while you&rsquo;re still talking. On your Mac, with your Claude subscription.</p>
+    <div class="meta"><span>macOS 26</span><span>On-device transcription</span><span>Open source</span></div>
+  </section>
+
+  <div class="panel-wrap">
+    <div class="panel">
+      <div class="titlebar">
+        <div class="rec"></div>
+        <div class="ttl"><b>Weekly sync with Acme</b><small>Zoom &middot; 4 people</small></div>
+        <div class="timer">12:31</div>
+      </div>
+
+      <div class="wave" id="wave"></div>
+
+      <div class="section"><span>To-dos &middot; 3</span><span class="live">Live</span></div>
+
+      <div class="rows">
+        <div class="row">
+          <div class="box"></div>
+          <div class="body">
+            <div class="t">Send Acme the revised proposal</div>
+            <div class="m"><span class="chip"><span class="av" style="background:#4F46E5">A</span>Ashley</span><span>Due Friday</span></div>
+          </div>
+          <div class="act"><span class="btn">Start</span></div>
+        </div>
+
+        <div class="row">
+          <div class="box"></div>
+          <div class="body">
+            <div class="t">Summarize pricing notes for Dan</div>
+            <div class="m"><span class="chip"><span class="av" style="background:#8B5CF6">Y</span>You</span><span>Due today</span></div>
+          </div>
+          <div class="act">
+            <span class="running">
+              <svg class="spin" viewBox="0 0 16 16"><circle cx="8" cy="8" r="6" fill="none" stroke="currentColor" stroke-opacity=".25" stroke-width="2"/><path d="M8 2a6 6 0 0 1 6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+              Running
+            </span>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="box"></div>
+          <div class="body">
+            <div class="t">Book a design review with Priya</div>
+            <div class="m"><span class="chip"><span class="av" style="background:#0E9FB8">M</span>Marcus</span><span>Next week</span><span class="fresh">Added just now</span></div>
+          </div>
+          <div class="act"><span class="btn ghost">Start</span></div>
+        </div>
+      </div>
+
+      <div class="foot">
+        <span class="lock">
+          <svg width="11" height="12" viewBox="0 0 11 12"><rect x="1" y="5" width="9" height="6.5" rx="1.6" fill="currentColor"/><path d="M3 5V3.6a2.5 2.5 0 0 1 5 0V5" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+          Transcribing on this Mac
+        </span>
+        <span>Notes ready at hang-up</span>
+      </div>
+    </div>
+  </div>
+
+<script>
+  // Deterministic waveform: a calm speech envelope.
+  (function () {
+    const el = document.getElementById('wave');
+    const n = 86;
+    for (let i = 0; i < n; i++) {
+      const x = i / (n - 1);
+      const env = 0.35 + 0.65 * Math.pow(Math.sin(Math.PI * x), 0.8);
+      const v = Math.abs(Math.sin(i * 0.9) * 0.55 + Math.sin(i * 0.37 + 1.3) * 0.35 + Math.sin(i * 2.1) * 0.18);
+      const h = Math.max(3, Math.round(24 * env * Math.min(1, v + 0.12)));
+      const b = document.createElement('i');
+      b.style.height = h + 'px';
+      b.style.opacity = (0.35 + 0.65 * x).toFixed(2);
+      el.appendChild(b);
+    }
+  })();
+</script>
+</body>
+</html>

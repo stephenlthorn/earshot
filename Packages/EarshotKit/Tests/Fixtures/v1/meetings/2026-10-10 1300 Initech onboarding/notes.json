@@ -1,0 +1,33 @@
+{
+  "action_items" : [
+    {
+      "context" : "Two admins, quarter-end deadline.",
+      "doer" : "ai",
+      "due" : "Thursday",
+      "owner" : "Stephen",
+      "task" : "Prepare the Initech onboarding plan"
+    },
+    {
+      "context" : "",
+      "doer" : "someone_else",
+      "due" : null,
+      "owner" : "Peter Gibbons",
+      "task" : "Schedule the admin training"
+    }
+  ],
+  "attendees" : [
+    "Stephen",
+    "Peter Gibbons"
+  ],
+  "decisions" : [
+    "Onboarding finishes before the quarter ends"
+  ],
+  "key_points" : [
+    "Initech has two admins"
+  ],
+  "open_questions" : [
+    "Does Initech need single sign-on?"
+  ],
+  "summary" : "Peter Gibbons from Initech wants onboarding done before the quarter ends.",
+  "title" : "Initech onboarding"
+}

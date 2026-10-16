@@ -1,0 +1,14 @@
+{
+  "name": "earshot-reminders",
+  "displayName": "Earshot reminders",
+  "version": "0.3.0",
+  "description": "Opt-in. At the start of each Claude Code session, adds up to five of your own open action items from the last week of Earshot meetings, quoted as data. Adds nothing when there are none. Needs Earshot.app in /Applications or ~/Applications.",
+  "author": {
+    "name": "Stephen Thorn",
+    "url": "https://github.com/stephenlthorn"
+  },
+  "homepage": "https://github.com/stephenlthorn/earshot",
+  "repository": "https://github.com/stephenlthorn/earshot",
+  "license": "MIT",
+  "keywords": ["meetings", "reminders", "hooks", "macos"]
+}

@@ -1,0 +1,61 @@
+name: Earshot
+options:
+  bundleIdPrefix: com.stephenthorn
+  deploymentTarget:
+    macOS: "26.0"
+  # XcodeGen gives an Icon Composer file the type wrapper.icon, which Xcode doesn't list; Xcode's own type is
+  # folder.iconcomposer.icon (actool compiles it into Assets.car). Fix it after each generate, and fail if it's missing.
+  postGenCommand: >-
+    sed -i '' -E 's/lastKnownFileType = [^;]+; path = AppIcon.icon;/lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon;/'
+    Earshot.xcodeproj/project.pbxproj &&
+    grep -q 'lastKnownFileType = folder.iconcomposer.icon; path = AppIcon.icon;' Earshot.xcodeproj/project.pbxproj
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    SWIFT_STRICT_CONCURRENCY: complete
+    MARKETING_VERSION: "0.3.0"
+    CURRENT_PROJECT_VERSION: "4"
+packages:
+  EarshotKit:
+    path: Packages/EarshotKit
+targets:
+  Earshot:
+    type: application
+    platform: macOS
+    sources:
+      - path: App
+        excludes: [AppIcon.icon, AppIcon.icon/**]
+      # The app icon: one resource, compiled by actool. Its name matches ASSETCATALOG_COMPILER_APPICON_NAME.
+      - path: App/AppIcon.icon
+        buildPhase: resources
+    dependencies:
+      - package: EarshotKit
+    scheme: {}
+    info:
+      path: App/Info.plist
+      properties:
+        CFBundleDisplayName: Earshot
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        LSUIElement: true
+        LSApplicationCategoryType: public.app-category.productivity
+        NSMicrophoneUsageDescription: Earshot records your side of the meeting.
+        NSAudioCaptureUsageDescription: Earshot records the other people on the call from your Mac's audio.
+        NSCalendarsFullAccessUsageDescription: Earshot reads the event happening now to name the meeting, know who is in it and prepare a short brief. It never changes your calendar.
+        # Plain http for a webhook on this Mac or the local network only; anything else needs https.
+        NSAppTransportSecurity:
+          NSAllowsLocalNetworking: true
+    entitlements:
+      path: App/Earshot.entitlements
+      properties:
+        com.apple.security.device.audio-input: true
+        com.apple.security.personal-information.calendars: true
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.stephenthorn.earshot
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ENABLE_HARDENED_RUNTIME: YES
+        GENERATE_INFOPLIST_FILE: NO
+        CODE_SIGNING_ALLOWED: NO
+        ARCHS: "arm64 x86_64"
+        ONLY_ACTIVE_ARCH: NO

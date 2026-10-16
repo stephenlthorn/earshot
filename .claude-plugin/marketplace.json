@@ -1,0 +1,24 @@
+{
+  "name": "earshot",
+  "description": "Earshot, the macOS meeting recorder, for Claude Code: read your meetings through an MCP server and a skill, plus opt-in session reminders.",
+  "owner": {
+    "name": "Stephen Thorn",
+    "url": "https://github.com/stephenlthorn"
+  },
+  "plugins": [
+    {
+      "name": "earshot",
+      "source": "./plugins/earshot",
+      "description": "Search and read your Earshot meetings from Claude Code: notes, decisions, action items and transcripts.",
+      "category": "productivity",
+      "tags": ["meetings", "transcripts", "mcp", "macos"]
+    },
+    {
+      "name": "earshot-reminders",
+      "source": "./plugins/earshot-reminders",
+      "description": "Opt-in. At the start of each Claude Code session, adds up to five of your own open action items from the last week of Earshot meetings, quoted as data.",
+      "category": "productivity",
+      "tags": ["meetings", "reminders", "hooks", "macos"]
+    }
+  ]
+}

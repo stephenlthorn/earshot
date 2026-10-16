@@ -1,0 +1,44 @@
+{
+  "endedAt" : "2026-10-05T14:32:00Z",
+  "folderName" : "2026-10-05 1000 Acme kickoff",
+  "id" : "2026-10-05-1000-66f9",
+  "inFlight" : [
+
+  ],
+  "mode" : "notes",
+  "recording" : false,
+  "sent" : [
+
+  ],
+  "stages" : {
+    "compress" : {
+      "failures" : 0,
+      "status" : "done"
+    },
+    "notes" : {
+      "failures" : 0,
+      "status" : "done"
+    },
+    "transcribe" : {
+      "failures" : 0,
+      "status" : "done"
+    }
+  },
+  "startedAt" : "2026-10-05T14:00:00Z",
+  "title" : "Acme kickoff",
+  "tracks" : [
+    {
+      "file" : "mic.m4a",
+      "offset" : 0,
+      "track" : "me"
+    },
+    {
+      "file" : "system.m4a",
+      "offset" : 0.25,
+      "track" : "them"
+    }
+  ],
+  "warnings" : [
+
+  ]
+}

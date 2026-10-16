@@ -1,0 +1,25 @@
+{
+  "action_items" : [
+    {
+      "context" : "Five steps, one screen.",
+      "doer" : "ai",
+      "due" : null,
+      "owner" : "Stephen",
+      "task" : "Write the setup checklist draft"
+    }
+  ],
+  "attendees" : [
+    "Stephen"
+  ],
+  "decisions" : [
+
+  ],
+  "key_points" : [
+    "A setup checklist would cut support questions"
+  ],
+  "open_questions" : [
+
+  ],
+  "summary" : "Ideas for a faster onboarding flow.",
+  "title" : "Brain dump: onboarding ideas"
+}

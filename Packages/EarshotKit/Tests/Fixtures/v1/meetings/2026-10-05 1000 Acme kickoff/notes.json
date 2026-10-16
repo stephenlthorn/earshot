@@ -1,0 +1,34 @@
+{
+  "action_items" : [
+    {
+      "context" : "Dana wants the scope in writing before Monday.",
+      "doer" : "ai",
+      "due" : "Friday",
+      "owner" : "Stephen",
+      "task" : "Draft the pilot scope email to Dana"
+    },
+    {
+      "context" : "",
+      "doer" : "me",
+      "due" : null,
+      "owner" : "Stephen",
+      "task" : "Book the venue for the pilot review"
+    }
+  ],
+  "attendees" : [
+    "Stephen",
+    "Dana Smith"
+  ],
+  "decisions" : [
+    "The pilot starts Monday"
+  ],
+  "key_points" : [
+    "Acme logs field jobs by hand",
+    "The pilot covers the Boston team only"
+  ],
+  "open_questions" : [
+    "Who signs off on the budget?"
+  ],
+  "summary" : "Dana Smith from Acme agreed a two-week pilot starting Monday. Stephen will send the scope in writing.",
+  "title" : "Acme kickoff: scope and pilot dates"
+}

@@ -1,0 +1,13 @@
+#!/bin/sh
+# Starts Earshot's MCP server: the earshot helper inside Earshot.app, run as `earshot mcp`.
+# It looks in /Applications, then ~/Applications (spec 11.5), the same as reminders.sh, never on PATH.
+# EARSHOT_HELPER may name another earshot binary: a development override, checked first.
+for helper in "${EARSHOT_HELPER:-}" \
+  "/Applications/Earshot.app/Contents/Helpers/earshot" \
+  "$HOME/Applications/Earshot.app/Contents/Helpers/earshot"; do
+  if [ -n "$helper" ] && [ -x "$helper" ]; then
+    exec "$helper" mcp "$@"
+  fi
+done
+echo "earshot-mcp: Earshot.app was not found in /Applications or ~/Applications. Install Earshot, open it once, then restart Claude Code." >&2
+exit 1

@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="t-arcdark"><title id="t-arcdark">Earshot architecture: audio stays on your Mac, only text goes to Claude</title>
+<style>
+  .eyebrow { font-family: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace; font-size: 18px; letter-spacing: 2.6px; font-weight: 600; fill: #A5B4FC; }
+  .tag { font-family: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace; font-size: 20px; letter-spacing: 0.4px; fill: #7A7799; }
+  .num { font-family: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace; font-size: 19px; font-weight: 600; fill: #7A7799; }
+  .h1 { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 34px; font-weight: 650; letter-spacing: -0.4px; fill: #F7F7FB; }
+  .h2 { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 25px; font-weight: 650; letter-spacing: -0.2px; fill: #F7F7FB; }
+  .cap { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 21px; fill: #ABA8CB; }
+  .sub { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 18px; fill: #ABA8CB; }
+  .chip { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 17px; font-weight: 500; fill: #F7F7FB; }
+  .mono { font-family: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace; font-size: 18px; letter-spacing: 1.6px; font-weight: 600; fill: #7A7799; }
+  .flow { font-family: ui-monospace, 'SF Mono', SFMono-Regular, Menlo, Consolas, monospace; font-size: 19px; letter-spacing: 0.3px; font-weight: 600; }
+  .hero { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 30px; font-weight: 700; letter-spacing: -0.4px; fill: #F7F7FB; }
+  .lede { font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 19px; fill: #ABA8CB; }
+</style>
+<defs>
+  <linearGradient id="conn-arcdark" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#818CF8"/><stop offset="1" stop-color="#A78BFA"/>
+  </linearGradient>
+  <linearGradient id="hero-arcdark" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#4F46E5"/><stop offset="1" stop-color="#7C3AED"/>
+  </linearGradient>
+  <filter id="sh-arcdark" x="-10%" y="-10%" width="120%" height="140%">
+    <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#000000" flood-opacity="0.35"/>
+  </filter>
+  <marker id="arr-arcdark" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M1 1.5 8 5 1 8.5" fill="none" stroke="#A78BFA" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+  <marker id="arrc-arcdark" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M1 1.5 8 5 1 8.5" fill="none" stroke="#22D3EE" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+  <marker id="arrm-arcdark" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M1 1.5 8 5 1 8.5" fill="none" stroke="#7A7799" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+<rect width="1600" height="1000" rx="28" fill="#0F0E1A"/>
+<text class="eyebrow" x="56" y="66">ARCHITECTURE</text>
+<text class="hero" x="56" y="116">Audio stays on your Mac.</text>
+<text class="hero" x="56" y="154">Only text goes to Claude.</text>
+<path d="M56 202h40" stroke="#22D3EE" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arrc-arcdark)"/>
+<text class="flow" x="110" y="207" style="fill:#ABA8CB">audio</text>
+<path d="M186 202h40" stroke="#A78BFA" stroke-width="2.5" stroke-linecap="round" marker-end="url(#arr-arcdark)"/>
+<text class="flow" x="240" y="207" style="fill:#ABA8CB">text</text>
+<rect x="720" y="40" width="420" height="168" rx="20" fill="#18162B" stroke="#2B2848" stroke-width="1.5" filter="url(#sh-arcdark)"/>
+<rect x="742" y="62" width="48" height="48" rx="13" fill="#25214A"/>
+<g transform="translate(750 70) scale(0.6667)"><g fill="none" stroke="#A5B4FC" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 38h22a9 9 0 0 0 1-18 13 13 0 0 0-25 3 7.5 7.5 0 0 0 2 15z"/></g></g>
+<text class="h2" x="804" y="95">Claude</text>
+<text class="sub" x="744" y="144">Your Claude Code CLI with your</text>
+<text class="sub" x="744" y="171">subscription, or an API key</text>
+<rect x="32" y="262" width="1536" height="706" rx="26" fill="#141226" stroke="#3B3770" stroke-width="2" stroke-dasharray="10 8"/>
+<rect x="60" y="242" width="208" height="40" rx="20" fill="#0F0E1A" stroke="#3B3770" stroke-width="2"/>
+<g transform="translate(76 249) scale(0.5417)"><g fill="none" stroke="#A5B4FC" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="30" height="21" rx="3"/><path d="M4 37h40l-3 4H7z"/></g></g>
+<text class="eyebrow" x="112" y="268" style="letter-spacing:1.6px">ON YOUR MAC</text>
+<rect x="72" y="330" width="250" height="180" rx="20" fill="#18162B" stroke="#2B2848" stroke-width="1.5" filter="url(#sh-arcdark)"/>
+<rect x="94" y="352" width="48" height="48" rx="13" fill="#25214A"/>
+<g transform="translate(102 360) scale(0.6667)"><g fill="none" stroke="#A5B4FC" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="17" y="5" width="14" height="24" rx="7"/><path d="M11 22a13 13 0 0 0 26 0"/><path d="M24 35v7M17 42h14"/></g><circle cx="40" cy="9" r="4.5" fill="#F87171"/></g>
+<text class="h2" x="156" y="385">Capture</text>
+<text class="sub" x="96" y="434">Microphone</text>
+<text class="sub" x="96" y="461">Call audio tap</text>
+<rect x="382" y="330" width="270" height="180" rx="20" fill="#18162B" stroke="#2B2848" stroke-width="1.5" filter="url(#sh-arcdark)"/>
+<rect x="404" y="352" width="48" height="48" rx="13" fill="#25214A"/>
+<g transform="translate(412 360) scale(0.6667)"><g fill="none" stroke="#A5B4FC" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20v8M12 15v18M18 9v30M24 17v14M30 12v24M36 18v12M42 22v4"/></g></g>
+<text class="h2" x="466" y="385">Speech</text>
+<text class="sub" x="406" y="434">On-device,</text>
+<text class="sub" x="406" y="461">live + final transcript</text>
+<rect x="720" y="330" width="420" height="180" rx="20" fill="url(#hero-arcdark)" stroke="none" stroke-width="1.5" filter="url(#sh-arcdark)"/>
+<rect x="742" y="352" width="48" height="48" rx="13" fill="rgba(255,255,255,0.16)"/>
+<g transform="translate(750 360) scale(0.6667)"><g fill="none" stroke="#FFFFFF" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M24 6 42 15 24 24 6 15z"/><path d="M6 24l18 9 18-9"/><path d="M6 33l18 9 18-9"/></g></g>
+<text class="h2" x="804" y="385" style="fill:#FFFFFF">Earshot pipeline</text>
+<text class="sub" x="744" y="434" style="fill:#DCDAFF">Writes notes and pages,</text>
+<text class="sub" x="744" y="461" style="fill:#DCDAFF">finds to-dos, starts the work</text>
+<text class="mono" x="1210" y="320">CONTEXT</text>
+<rect x="1210" y="334" width="334" height="48" rx="14" fill="#18162B" stroke="#2B2848" stroke-width="1.5"/>
+<g transform="translate(1224 344) scale(0.5833)"><g fill="none" stroke="#A5B4FC" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="9" width="36" height="32" rx="6"/><path d="M6 19h36M15 5v8M33 5v8"/><path d="M14 27h4M22 27h4M30 27h4M14 34h4M22 34h4"/></g></g>
+<text class="chip" x="1266" y="364" style="font-size:18px">Calendar</text>
+<path d="M1204 358H1152" fill="none" stroke="#7A7799" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrm-arcdark)"/>
+<rect x="1210" y="396" width="334" height="48" rx="14" fill="#18162B" stroke="#2B2848" stroke-width="1.5"/>
+<g transform="translate(1224 406) scale(0.5833)"><g fill="none" stroke="#A5B4FC" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 9a3 3 0 0 1 3-3h20v32H11a3 3 0 0 0-3 3z"/><path d="M8 41a3 3 0 0 0 3 3h29V10"/><path d="M15 14h10M15 21h7"/></g></g>
+<text class="chip" x="1266" y="426" style="font-size:18px">Lessons</text>
+<path d="M1204 420H1152" fill="none" stroke="#7A7799" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrm-arcdark)"/>
+<rect x="1210" y="458" width="334" height="48" rx="14" fill="#18162B" stroke="#2B2848" stroke-width="1.5"/>
+<g transform="translate(1224 468) scale(0.5833)"><g fill="none" stroke="#A5B4FC" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="7" width="38" height="27" rx="5"/><path d="M18 42h12M24 34v8"/><path d="M12 16h18M12 23h11"/></g></g>
+<text class="chip" x="1266" y="488" style="font-size:18px">Screen text (optional)</text>
+<path d="M1204 482H1152" fill="none" stroke="#7A7799" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrm-arcdark)"/>
+<path d="M330 420.0H372" fill="none" stroke="#22D3EE" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrc-arcdark)"/>
+<path d="M660 420.0H710" fill="none" stroke="#A78BFA" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arr-arcdark)"/>
+<path d="M870 320V220" fill="none" stroke="#A78BFA" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arr-arcdark)"/>
+<path d="M1010 218V318" fill="none" stroke="#A78BFA" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arr-arcdark)"/>
+<rect x="732" y="245" width="126" height="34" rx="16" fill="#0F0E1A"/>
+<text class="flow" x="854" y="268" text-anchor="end" style="fill:#A5B4FC">text only</text>
+<rect x="1022" y="245" width="172" height="34" rx="16" fill="#0F0E1A"/>
+<text class="flow" x="1028" y="268" style="fill:#A5B4FC">notes, to-dos</text>
+<path d="M930.0 518V612" fill="none" stroke="#A78BFA" stroke-width="2.5" stroke-linecap="round"/>
+<path d="M237.0 612H1020.0" fill="none" stroke="#818CF8" stroke-width="2.5" stroke-linecap="round"/>
+<path d="M237.0 612V674" fill="none" stroke="#A78BFA" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arr-arcdark)"/>
+<path d="M632.0 612V674" fill="none" stroke="#A78BFA" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arr-arcdark)"/>
+<path d="M1020.0 612V674" fill="none" stroke="#A78BFA" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arr-arcdark)"/>
+<circle cx="930.0" cy="612" r="5" fill="#A78BFA"/>
+<rect x="72" y="684" width="330" height="238" rx="20" fill="#18162B" stroke="#2B2848" stroke-width="1.5" filter="url(#sh-arcdark)"/>
+<rect x="94" y="706" width="48" height="48" rx="13" fill="#25214A"/>
+<g transform="translate(102 714) scale(0.6667)"><g fill="none" stroke="#A5B4FC" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 5h15l10 10v26a3 3 0 0 1-3 3H13a3 3 0 0 1-3-3V8a3 3 0 0 1 3-3z"/><path d="M28 5v10h10"/><path d="M16 24h16M16 31h16M16 38h9"/></g></g>
+<text class="h2" x="156" y="739">Notes page</text>
+<rect x="96" y="778" width="282" height="34" rx="10" fill="#201D38" stroke="#2E2A52" stroke-width="1"/>
+<text class="chip" x="112" y="801.0">Summary</text>
+<rect x="96" y="820" width="282" height="34" rx="10" fill="#201D38" stroke="#2E2A52" stroke-width="1"/>
+<text class="chip" x="112" y="843.0">Decisions</text>
+<rect x="96" y="862" width="282" height="34" rx="10" fill="#201D38" stroke="#2E2A52" stroke-width="1"/>
+<text class="chip" x="112" y="885.0">Who owes what</text>
+<rect x="432" y="684" width="400" height="238" rx="20" fill="#18162B" stroke="#2B2848" stroke-width="1.5" filter="url(#sh-arcdark)"/>
+<rect x="454" y="706" width="48" height="48" rx="13" fill="#25214A"/>
+<g transform="translate(462 714) scale(0.6667)"><g fill="none" stroke="#A5B4FC" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="18"/><path d="M20 16.5 32 24l-12 7.5z" fill="#A5B4FC"/></g></g>
+<text class="h2" x="516" y="739">Do targets</text>
+<rect x="456" y="778" width="170" height="40" rx="10" fill="#201D38" stroke="#2E2A52" stroke-width="1"/>
+<text class="chip" x="472" y="804.0">Claude Code</text>
+<rect x="456" y="830" width="170" height="40" rx="10" fill="#201D38" stroke="#2E2A52" stroke-width="1"/>
+<text class="chip" x="472" y="856.0">Webhook</text>
+<rect x="638" y="778" width="170" height="40" rx="10" fill="#201D38" stroke="#2E2A52" stroke-width="1"/>
+<text class="chip" x="654" y="804.0">Routine</text>
+<rect x="638" y="830" width="170" height="40" rx="10" fill="#201D38" stroke="#2E2A52" stroke-width="1"/>
+<text class="chip" x="654" y="856.0">Command</text>
+<text class="sub" x="456" y="896" style="font-size:17px;fill:#ABA8CB">One click on a to-do starts it</text>
+<rect x="862" y="684" width="316" height="238" rx="20" fill="#18162B" stroke="#2B2848" stroke-width="1.5" filter="url(#sh-arcdark)"/>
+<rect x="884" y="706" width="48" height="48" rx="13" fill="#25214A"/>
+<g transform="translate(892 714) scale(0.6667)"><g fill="none" stroke="#A5B4FC" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 5v9M31 5v9"/><path d="M11 14h26v7a13 13 0 0 1-26 0z"/><path d="M24 34v9"/></g></g>
+<text class="h2" x="946" y="739">For every AI</text>
+<rect x="886" y="778" width="268" height="34" rx="10" fill="#201D38" stroke="#2E2A52" stroke-width="1"/>
+<text class="chip" x="902" y="801.0">earshot CLI</text>
+<rect x="886" y="820" width="268" height="34" rx="10" fill="#201D38" stroke="#2E2A52" stroke-width="1"/>
+<text class="chip" x="902" y="843.0">MCP server</text>
+<rect x="886" y="862" width="268" height="34" rx="10" fill="#201D38" stroke="#2E2A52" stroke-width="1"/>
+<text class="chip" x="902" y="885.0">Claude Code plugins</text>
+<path d="M1186 803.0H1226" fill="none" stroke="#A78BFA" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arr-arcdark)"/>
+<rect x="1236" y="684" width="308" height="238" rx="20" fill="#18162B" stroke="#2B2848" stroke-width="1.5" filter="url(#sh-arcdark)"/>
+<rect x="1258" y="706" width="48" height="48" rx="13" fill="#25214A"/>
+<g transform="translate(1266 714) scale(0.6667)"><g fill="none" stroke="#A5B4FC" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="15" height="15" rx="4"/><rect x="27" y="6" width="15" height="15" rx="4"/><rect x="6" y="27" width="15" height="15" rx="4"/><rect x="27" y="27" width="15" height="15" rx="4"/></g></g>
+<text class="h2" x="1320" y="739">Your AI tools</text>
+<rect x="1260" y="778" width="260" height="34" rx="10" fill="#201D38" stroke="#2E2A52" stroke-width="1"/>
+<text class="chip" x="1276" y="801.0">Claude Code</text>
+<rect x="1260" y="820" width="260" height="34" rx="10" fill="#201D38" stroke="#2E2A52" stroke-width="1"/>
+<text class="chip" x="1276" y="843.0">Claude Desktop</text>
+<rect x="1260" y="862" width="260" height="34" rx="10" fill="#201D38" stroke="#2E2A52" stroke-width="1"/>
+<text class="chip" x="1276" y="885.0">Any MCP client</text>
+</svg>

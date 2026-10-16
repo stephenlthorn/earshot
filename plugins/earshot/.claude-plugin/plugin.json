@@ -1,0 +1,14 @@
+{
+  "name": "earshot",
+  "displayName": "Earshot",
+  "version": "0.3.0",
+  "description": "Search and read your Earshot meetings from Claude Code: notes, decisions, action items and transcripts. Needs Earshot.app in /Applications or ~/Applications.",
+  "author": {
+    "name": "Stephen Thorn",
+    "url": "https://github.com/stephenlthorn"
+  },
+  "homepage": "https://github.com/stephenlthorn/earshot",
+  "repository": "https://github.com/stephenlthorn/earshot",
+  "license": "MIT",
+  "keywords": ["meetings", "transcripts", "mcp", "macos"]
+}

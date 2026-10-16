@@ -1,0 +1,49 @@
+{
+  "endedAt" : "2026-10-10T17:25:00Z",
+  "folderName" : "2026-10-10 1300 Initech onboarding",
+  "id" : "2026-10-10-1300-fce4",
+  "inFlight" : [
+
+  ],
+  "mode" : "notes_and_do",
+  "recording" : false,
+  "sent" : [
+
+  ],
+  "stages" : {
+    "compress" : {
+      "failures" : 0,
+      "status" : "pending"
+    },
+    "dispatch" : {
+      "error" : "Webhook: down",
+      "failures" : 1,
+      "status" : "failed"
+    },
+    "notes" : {
+      "failures" : 0,
+      "status" : "done"
+    },
+    "transcribe" : {
+      "failures" : 0,
+      "status" : "done"
+    }
+  },
+  "startedAt" : "2026-10-10T17:00:00Z",
+  "title" : "Initech onboarding",
+  "tracks" : [
+    {
+      "file" : "mic.caf",
+      "offset" : 0,
+      "track" : "me"
+    },
+    {
+      "file" : "system.caf",
+      "offset" : 0.25,
+      "track" : "them"
+    }
+  ],
+  "warnings" : [
+
+  ]
+}

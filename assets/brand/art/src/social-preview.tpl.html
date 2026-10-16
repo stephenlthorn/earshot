@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1280">
+<title>Earshot social preview</title>
+<!-- Render at 1280x640, device scale 1. Safe area: 40px on every side. -->
+<style>
+  :root {
+    --deep: #1E1B4B; --indigo: #4F46E5; --violet: #8B5CF6; --cyan: #22D3EE;
+    --red: #EF4444; --warm: #F7F7FB; --ink: #0F0E1A;
+    --text: #F7F7FB; --text-2: #BDBADF; --text-3: #8F8CB4;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1280px; height: 640px; overflow: hidden; background: var(--ink); }
+  body {
+    position: relative; color: var(--text);
+    font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .bg { position: absolute; inset: 0; overflow: hidden; }
+  .bg .g1 { position: absolute; width: 900px; height: 900px; left: 600px; top: -130px;
+            background: radial-gradient(closest-side, rgba(79, 70, 229, 0.42), transparent); }
+  .bg .g2 { position: absolute; width: 600px; height: 600px; left: 860px; top: 280px;
+            background: radial-gradient(closest-side, rgba(139, 92, 246, 0.26), transparent); }
+  .bg .g3 { position: absolute; width: 700px; height: 700px; left: -260px; top: -320px;
+            background: radial-gradient(closest-side, rgba(79, 70, 229, 0.18), transparent); }
+
+  /* Concentric "earshot" rings around the icon */
+  .rings { position: absolute; left: 960px; top: 320px; width: 0; height: 0; }
+  .rings i { position: absolute; border-radius: 50%; border: 1.5px solid rgba(165, 160, 255, 0.16);
+             transform: translate(-50%, -50%); }
+
+  .icon { position: absolute; left: 960px; top: 320px; width: 380px; height: 380px;
+          transform: translate(-50%, -50%);
+          filter: drop-shadow(0 30px 50px rgba(5, 4, 20, 0.6)) drop-shadow(0 0 60px rgba(79, 70, 229, 0.45)); }
+
+  .left { position: absolute; left: 96px; top: 40px; bottom: 40px; width: 680px;
+          display: flex; flex-direction: column; justify-content: center; }
+  .rec { display: inline-flex; align-items: center; gap: 12px; align-self: flex-start;
+         font-family: "SF Mono", ui-monospace, Menlo, monospace; font-size: 20px; font-weight: 500;
+         letter-spacing: 0.04em; color: var(--text-2); padding: 10px 18px 10px 14px; border-radius: 999px;
+         background: rgba(255,255,255,0.06); border: 1px solid rgba(200, 196, 255, 0.16); }
+  .rec .dot { width: 14px; height: 14px; border-radius: 50%; background: var(--red);
+              box-shadow: 0 0 0 5px rgba(239, 68, 68, 0.2), 0 0 16px rgba(239, 68, 68, 0.6); }
+  .rec b { color: var(--text); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .wordmark { margin-top: 30px; font-size: 128px; font-weight: 700; letter-spacing: -0.045em; line-height: 0.95; }
+  .tagline { margin-top: 22px; font-size: 48px; font-weight: 600; letter-spacing: -0.025em; white-space: nowrap; line-height: 1.1; }
+  .tagline .accent { background: linear-gradient(90deg, #A5B4FC, #C4B5FD);
+                     -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .support { margin-top: 26px; font-size: 25px; line-height: 1.4; color: var(--text-2); max-width: 560px; }
+</style>
+</head>
+<body>
+  <div class="bg"><div class="g3"></div><div class="g1"></div><div class="g2"></div></div>
+
+  <div class="rings">
+    <i style="width:470px;height:470px"></i>
+    <i style="width:590px;height:590px;border-color:rgba(165,160,255,0.11)"></i>
+    <i style="width:710px;height:710px;border-color:rgba(165,160,255,0.07)"></i>
+    <i style="width:830px;height:830px;border-color:rgba(165,160,255,0.04)"></i>
+  </div>
+  <img class="icon" src="{{ICON}}" alt="">
+
+  <section class="left">
+    <div class="rec"><span class="dot"></span><b>12:31</b>&nbsp;Recording</div>
+    <div class="wordmark">Earshot</div>
+    <div class="tagline">Meetings, <span class="accent">heard and handled.</span></div>
+    <p class="support">Call notes and to-dos, live, on your Mac.<br>Open source for macOS 26.</p>
+  </section>
+</body>
+</html>

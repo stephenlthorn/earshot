@@ -1,0 +1,50 @@
+{
+  "attendeeKeys" : [],
+  "attendees" : [
+    { "domain" : "northwind.example", "name" : "Priya Raman" }
+  ],
+  "brief" : null,
+  "decisions" : [ "Renew for one year at the current tier" ],
+  "duration" : 1500,
+  "finished" : true,
+  "flags" : [],
+  "folder" : "@@ROOT@@/2026-10-13 1000 Northwind renewal",
+  "hasTranscript" : true,
+  "id" : "2026-10-13-1000-n0r7",
+  "items" : [
+    { "doer" : "me", "due" : "Thursday", "owner" : "Stephen", "status" : "Not sent yet", "task" : "Send Priya the signed Northwind order form" },
+    { "doer" : "someone_else", "due" : null, "owner" : "Priya Raman", "status" : "Not sent yet", "task" : "Share the updated seat count" }
+  ],
+  "live" : [],
+  "mode" : "notes",
+  "notes" : {
+    "action_items" : [
+      { "context" : "Priya needs it before their finance cut-off.", "doer" : "me", "due" : "Thursday", "live_ref" : null, "owner" : "Stephen", "task" : "Send Priya the signed Northwind order form" },
+      { "context" : "", "doer" : "someone_else", "due" : null, "live_ref" : null, "owner" : "Priya Raman", "task" : "Share the updated seat count" }
+    ],
+    "attendees" : [ "Stephen", "Priya Raman" ],
+    "decisions" : [ "Renew for one year at the current tier" ],
+    "flagged_moments" : [],
+    "key_points" : [ "Northwind wants to renew before their finance cut-off" ],
+    "open_questions" : [],
+    "still_open" : [],
+    "summary" : "Priya Raman from Northwind agreed to renew for one year. Stephen will send the signed order form.",
+    "title" : "Northwind renewal"
+  },
+  "routineRuns" : {},
+  "sent" : [],
+  "speakers" : { "me" : "Stephen", "speaker" : "Speaker", "them" : "Them" },
+  "startedAt" : "@@STARTED_AT@@",
+  "startedBy" : "manual",
+  "statuses" : [ "Not sent yet", "Not sent yet" ],
+  "summary" : "Priya Raman from Northwind agreed to renew for one year. Stephen will send the signed order form.",
+  "title" : "Northwind renewal",
+  "transcript" : [
+    { "speaker" : "Stephen", "start" : 6, "text" : "Thanks for joining, Priya. Let's talk about the renewal." },
+    { "speaker" : "Them", "start" : 14, "text" : "Our budget for the renewal is 48,000 dollars for the year, and we'd like to stay on the current tier." },
+    { "speaker" : "Stephen", "start" : 31, "text" : "That works. I'll send you the signed order form by Thursday." },
+    { "speaker" : "Them", "start" : 42, "text" : "Great. I'll share the updated seat count once HR confirms it." }
+  ],
+  "typedTitle" : null,
+  "version" : 1
+}
