@@ -244,11 +244,12 @@ struct LiveTranscriptionTests {
     @Test func aBoundedWaitGivesUpOnWorkThatNeverEnds() async {
         let clock = ContinuousClock()
         let started = clock.now
+        // The work would take 30 s; giving up well inside that proves the wait is bounded, with room for slow CI runners.
         let stuck = await LiveTranscriber.within(.milliseconds(100)) {
-            try? await Task.sleep(for: .seconds(5))
+            try? await Task.sleep(for: .seconds(30))
             return true
         }
-        #expect(!stuck && clock.now - started < .seconds(2))
+        #expect(!stuck && clock.now - started < .seconds(10))
         #expect(await LiveTranscriber.within(.seconds(5)) { true })
         #expect(!(await LiveTranscriber.within(.seconds(5)) { false }))
     }

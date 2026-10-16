@@ -88,10 +88,12 @@ struct ProcessRunnerTests {
     @Test func doesNotWaitForABackgroundChildThatKeepsThePipesOpen() async throws {
         let clock = ContinuousClock()
         let started = clock.now
-        let out = try await ProcessRunner().run("/bin/sh", ["-c", "sleep 4 & echo done"], stdin: nil, directory: nil,
-                                                environment: [:], timeout: .seconds(20))
+        // The child keeps the pipes open for 30 s; returning well inside that proves the runner doesn't wait for it,
+        // with room for slow CI runners.
+        let out = try await ProcessRunner().run("/bin/sh", ["-c", "sleep 30 & echo done"], stdin: nil, directory: nil,
+                                                environment: [:], timeout: .seconds(60))
         #expect(out == ProcessOutput(status: 0, stdout: "done\n", stderr: "", timedOut: false))
-        #expect(clock.now - started < .seconds(2))
+        #expect(clock.now - started < .seconds(10))
     }
 
     @Test func terminateAllStopsEveryRunningProgramAndStartsNoMore() async throws {
